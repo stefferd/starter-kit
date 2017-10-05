@@ -4,13 +4,15 @@
   "description": "JavaScript development environment Pluralsight course by Cory House",
   "scripts": {
     "prestart": "./node_modules/.bin/babel-node build/startMessage.js",
-    "start": "npm-run-all --parallel security-check open:src lint:watch",
+    "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
     "open:src": "./node_modules/.bin/babel-node build/srcServer.js",
     "lint": "./node_modules/.bin/esw webpack.config.*, src, build --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "./node_modules/.bin/nsp check",
     "localtunnel": "./node_modules/.bin/lt --port 3000",
-    "share": "npm-run-all --parallel open:src localtunnel"
+    "share": "npm-run-all --parallel open:src localtunnel",
+    "test": "./node_modules/.bin/mocha --reporter progress build/testSetup.js \"src/**/*.spec.js\"",
+    "test:watch": "npm run test -- --watch"
   },
   "author": "Stef van den Berg",
   "license": "MIT",
