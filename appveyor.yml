@@ -3,17 +3,17 @@ environment:
   matrix:
     - nodejs_version: "6"
 
-  install:
-    # get the latest stable version of Node.js
-    - ps: Install-Product node $env:nodejs_version
-    # install modules
-    - npm install
+install:
+  # get the latest stable version of Node.js
+  - ps: Install-Product node $env:nodejs_version
+  # install modules
+  - npm install
 
-  test_script:
-    - node --version
-    - npm --version
-    # run rests
-    - npm test
+test_script:
+  - node --version
+  - npm --version
+  # run rests
+  - npm test
 
-  # do not actually build
-  build: off
+# do not actually build
+build: off
