@@ -1,8 +1,21 @@
+<!--
+  ** NOTE **
+  this template uses ejs and htmlWebpackPlugin to generate a different index.html for each environment
+  for more info on EJS, see http://www.embeddedjs.com/
+  for examples of using it with htmlWebpackPlugin,
+  see https://github.com/jaketrent/html-webpack-template/blob/master/index.ejs
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Javascript Starter kit</title>
+  <% if (htmlWebpackPlugin.options.trackJSToken) { %>
+  <!-- BEGIN TRACKJS -->
+  <script type="text/javascript">window._trackJs = { token: '<%=htmlWebpackPlugin.options.trackJSToken%>' };</script>
+  <script type="text/javascript" src="https://cdn.trackjs.com/releases/current/tracker.js"></script>
+  <!-- END TRACKJS -->
+  <% } %>
+  <meta charset="UTF-8">
+  <title>Javascript Starter kit</title>
 </head>
 <body>
   <h1>Hello world!</h1>
@@ -16,6 +29,5 @@
     </thead>
     <tbody id="users"></tbody>
   </table>
-  <script src="bundle.js"></script>
 </body>
 </html>
